@@ -15,6 +15,7 @@ namespace Demineur
         bool hard;//Difficulty
         SoundPlayer musicPlayer = new SoundPlayer(@"Sounds/stress.wav");
         Bitmap flag = new Bitmap(@"Images/flag.png");
+        Bitmap bomb = new Bitmap(@"Images/bomb.png");
         int nbrOfBomb;//number of bombs
         int nbrOfFlags;//Number of flags that the user used
         bool quit = false;//Bool to know if it has to go out of the double for loop
@@ -102,14 +103,13 @@ namespace Demineur
             Button btnClicked = (Button)sender;
             if (btnClicked.Tag == "Bomb")
             {
-                btnClicked.Text = "Was a bomb";
                 for (int i = 0; i < NBROWCOLS; i++)
                 {
                     for (int j = 0; j < NBROWCOLS; j++)
                     {
                         if (arrButtons[i,j].Tag == "Bomb")
                         {
-                            arrButtons[i, j].BackColor = Color.Red;
+                            arrButtons[i, j].Image = bomb;
                         }
                     }
                 }
