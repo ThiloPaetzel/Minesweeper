@@ -30,10 +30,11 @@ namespace Demineur
         private void InitializeComponent()
         {
             this.splitContainer = new System.Windows.Forms.SplitContainer();
+            this.lblNbrOfFlags = new System.Windows.Forms.Label();
+            this.lblNbrOfBombs = new System.Windows.Forms.Label();
             this.lblFlag = new System.Windows.Forms.Label();
             this.lblScore = new System.Windows.Forms.Label();
             this.btnNewGame = new System.Windows.Forms.Button();
-            this.lblNbrOfBombs = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.SuspendLayout();
@@ -49,6 +50,7 @@ namespace Demineur
             // 
             // splitContainer.Panel1
             // 
+            this.splitContainer.Panel1.Controls.Add(this.lblNbrOfFlags);
             this.splitContainer.Panel1.Controls.Add(this.lblNbrOfBombs);
             this.splitContainer.Panel1.Controls.Add(this.lblFlag);
             this.splitContainer.Panel1.Controls.Add(this.lblScore);
@@ -56,6 +58,24 @@ namespace Demineur
             this.splitContainer.Size = new System.Drawing.Size(942, 534);
             this.splitContainer.SplitterDistance = 141;
             this.splitContainer.TabIndex = 0;
+            // 
+            // lblNbrOfFlags
+            // 
+            this.lblNbrOfFlags.AutoSize = true;
+            this.lblNbrOfFlags.Location = new System.Drawing.Point(260, 86);
+            this.lblNbrOfFlags.Name = "lblNbrOfFlags";
+            this.lblNbrOfFlags.Size = new System.Drawing.Size(108, 15);
+            this.lblNbrOfFlags.TabIndex = 4;
+            this.lblNbrOfFlags.Text = "Number of flags : 0";
+            // 
+            // lblNbrOfBombs
+            // 
+            this.lblNbrOfBombs.AutoSize = true;
+            this.lblNbrOfBombs.Location = new System.Drawing.Point(260, 30);
+            this.lblNbrOfBombs.Name = "lblNbrOfBombs";
+            this.lblNbrOfBombs.Size = new System.Drawing.Size(114, 15);
+            this.lblNbrOfBombs.TabIndex = 3;
+            this.lblNbrOfBombs.Text = "Number of bombs : ";
             // 
             // lblFlag
             // 
@@ -86,15 +106,6 @@ namespace Demineur
             this.btnNewGame.UseVisualStyleBackColor = true;
             this.btnNewGame.Click += new System.EventHandler(this.btnNewGame_Click);
             // 
-            // lblNbrOfBombs
-            // 
-            this.lblNbrOfBombs.AutoSize = true;
-            this.lblNbrOfBombs.Location = new System.Drawing.Point(201, 30);
-            this.lblNbrOfBombs.Name = "lblNbrOfBombs";
-            this.lblNbrOfBombs.Size = new System.Drawing.Size(114, 15);
-            this.lblNbrOfBombs.TabIndex = 3;
-            this.lblNbrOfBombs.Text = "Number of bombs : ";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -121,6 +132,7 @@ namespace Demineur
         private System.Windows.Forms.Label lblScore;
         private System.Windows.Forms.Label lblFlag;
         private System.Windows.Forms.Label lblNbrOfBombs;
+        private System.Windows.Forms.Label lblNbrOfFlags;
     }
 }
 

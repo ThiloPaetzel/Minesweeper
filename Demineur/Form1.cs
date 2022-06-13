@@ -4,13 +4,16 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Media;
 
 namespace Demineur
 {
     public partial class Form1 : Form
-    {   
+    {
+        SoundPlayer musicPlayer = new SoundPlayer(@"F:\05-repertoires-ict-ssd\AUTRES\Demineur\Demineur\Sounds\stress.wav");//Must be changed if used somewhere else
         Bitmap flag = new Bitmap(@"F:\05-repertoires-ict-ssd\AUTRES\Demineur\Demineur\Images\flag.png");//Must be changed if used somewhere else
         int nbrOfBomb;//number of bombs
+        int nbrOfFlags;//Number of flags that the user used
         bool quit = false;//Bool to know if it has to go out of the double for loop
         int score;//Score
         Random random = new Random();//Random
@@ -25,6 +28,7 @@ namespace Demineur
 
         private void InitGame()
         {
+            musicPlayer.PlayLooping();
             int btnWidth = splitContainer.Panel2.Size.Width / NBROWCOLS;
             int btnHeight = splitContainer.Panel2.Size.Height / NBROWCOLS;
             for (int i = 0; i < NBROWCOLS; i++)
@@ -98,7 +102,7 @@ namespace Demineur
 
                 if (score == 100-nbrOfBomb)//Won
                 {
-                    DialogResult win = MessageBox.Show("Gagné ! Rejouer ?", "Partie terminée", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+                    DialogResult win = MessageBox.Show("Gagné ! Rejouer ?", "Partie terminée", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                     if (win == DialogResult.Yes)
                     {
                         Application.Restart();
@@ -204,11 +208,14 @@ namespace Demineur
             if (mouseWheelButton.Image != flag)
             {
                 mouseWheelButton.Image = flag;
+                nbrOfFlags++;
             }
             else
             {
                 mouseWheelButton.Image = null;
+                nbrOfFlags--;
             }
+            lblNbrOfFlags.Text = "number of flags : " + Convert.ToString(nbrOfFlags);
         }
 
         /// <summary>
