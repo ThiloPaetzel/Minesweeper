@@ -10,8 +10,8 @@ namespace Demineur
 {
     public partial class Form1 : Form
     {
-        SoundPlayer musicPlayer = new SoundPlayer(@"F:\05-repertoires-ict-ssd\AUTRES\Demineur\Demineur\Sounds\stress.wav");//Must be changed if used somewhere else
-        Bitmap flag = new Bitmap(@"F:\05-repertoires-ict-ssd\AUTRES\Demineur\Demineur\Images\flag.png");//Must be changed if used somewhere else
+        SoundPlayer musicPlayer = new SoundPlayer(@"Sounds/stress.wav");//Must be changed if used somewhere else
+        Bitmap flag = new Bitmap(@"Images/flag.png");//Must be changed if used somewhere else
         int nbrOfBomb;//number of bombs
         int nbrOfFlags;//Number of flags that the user used
         bool quit = false;//Bool to know if it has to go out of the double for loop
