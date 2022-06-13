@@ -35,8 +35,12 @@ namespace Demineur
             this.lblFlag = new System.Windows.Forms.Label();
             this.lblScore = new System.Windows.Forms.Label();
             this.btnNewGame = new System.Windows.Forms.Button();
+            this.btnEasy = new System.Windows.Forms.Button();
+            this.btnMedium = new System.Windows.Forms.Button();
+            this.btnHard = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
+            this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +59,12 @@ namespace Demineur
             this.splitContainer.Panel1.Controls.Add(this.lblFlag);
             this.splitContainer.Panel1.Controls.Add(this.lblScore);
             this.splitContainer.Panel1.Controls.Add(this.btnNewGame);
+            // 
+            // splitContainer.Panel2
+            // 
+            this.splitContainer.Panel2.Controls.Add(this.btnHard);
+            this.splitContainer.Panel2.Controls.Add(this.btnMedium);
+            this.splitContainer.Panel2.Controls.Add(this.btnEasy);
             this.splitContainer.Size = new System.Drawing.Size(942, 534);
             this.splitContainer.SplitterDistance = 141;
             this.splitContainer.TabIndex = 0;
@@ -106,6 +116,36 @@ namespace Demineur
             this.btnNewGame.UseVisualStyleBackColor = true;
             this.btnNewGame.Click += new System.EventHandler(this.btnNewGame_Click);
             // 
+            // btnEasy
+            // 
+            this.btnEasy.Location = new System.Drawing.Point(153, 206);
+            this.btnEasy.Name = "btnEasy";
+            this.btnEasy.Size = new System.Drawing.Size(75, 23);
+            this.btnEasy.TabIndex = 0;
+            this.btnEasy.Text = "Easy";
+            this.btnEasy.UseVisualStyleBackColor = true;
+            this.btnEasy.Click += new System.EventHandler(this.btnEasy_Click);
+            // 
+            // btnMedium
+            // 
+            this.btnMedium.Location = new System.Drawing.Point(400, 206);
+            this.btnMedium.Name = "btnMedium";
+            this.btnMedium.Size = new System.Drawing.Size(75, 23);
+            this.btnMedium.TabIndex = 1;
+            this.btnMedium.Text = "Medium";
+            this.btnMedium.UseVisualStyleBackColor = true;
+            this.btnMedium.Click += new System.EventHandler(this.btnMedium_Click);
+            // 
+            // btnHard
+            // 
+            this.btnHard.Location = new System.Drawing.Point(653, 206);
+            this.btnHard.Name = "btnHard";
+            this.btnHard.Size = new System.Drawing.Size(75, 23);
+            this.btnHard.TabIndex = 2;
+            this.btnHard.Text = "Hard";
+            this.btnHard.UseVisualStyleBackColor = true;
+            this.btnHard.Click += new System.EventHandler(this.btnHard_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -119,6 +159,7 @@ namespace Demineur
             this.Text = "Demineur";
             this.splitContainer.Panel1.ResumeLayout(false);
             this.splitContainer.Panel1.PerformLayout();
+            this.splitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
             this.splitContainer.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -133,6 +174,9 @@ namespace Demineur
         private System.Windows.Forms.Label lblFlag;
         private System.Windows.Forms.Label lblNbrOfBombs;
         private System.Windows.Forms.Label lblNbrOfFlags;
+        private System.Windows.Forms.Button btnHard;
+        private System.Windows.Forms.Button btnMedium;
+        private System.Windows.Forms.Button btnEasy;
     }
 }
 

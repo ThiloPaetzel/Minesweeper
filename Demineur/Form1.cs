@@ -10,8 +10,11 @@ namespace Demineur
 {
     public partial class Form1 : Form
     {
-        SoundPlayer musicPlayer = new SoundPlayer(@"Sounds/stress.wav");//Must be changed if used somewhere else
-        Bitmap flag = new Bitmap(@"Images/flag.png");//Must be changed if used somewhere else
+        bool easy;//Difficulty
+        bool medium;//Difficulty
+        bool hard;//Difficulty
+        SoundPlayer musicPlayer = new SoundPlayer(@"Sounds/stress.wav");
+        Bitmap flag = new Bitmap(@"Images/flag.png");
         int nbrOfBomb;//number of bombs
         int nbrOfFlags;//Number of flags that the user used
         bool quit = false;//Bool to know if it has to go out of the double for loop
@@ -20,22 +23,49 @@ namespace Demineur
         int randomNumber;//Result of the random (to know if the button is a bomb or not)
         const int NBROWCOLS = 10;//Not touch (Number of cols and rows)
         Button[,] arrButtons = new Button[NBROWCOLS, NBROWCOLS];//Array of all the buttons
+        
         public Form1()
         {
             InitializeComponent();
-            InitGame();
+            btnNewGame.Visible = false;
+            lblFlag.Visible = false;
+            lblNbrOfBombs.Visible = false;
+            lblNbrOfFlags.Visible = false;
+            lblScore.Visible = false;
+
+            //InitGame();
         }
+
 
         private void InitGame()
         {
             musicPlayer.PlayLooping();
+            btnHard.Visible = false;
+            btnEasy.Visible = false;
+            btnMedium.Visible = false;
+            btnNewGame.Visible = true;
+            lblFlag.Visible = true;
+            lblNbrOfBombs.Visible = true;
+            lblNbrOfFlags.Visible = true;
+            lblScore.Visible = true;
             int btnWidth = splitContainer.Panel2.Size.Width / NBROWCOLS;
             int btnHeight = splitContainer.Panel2.Size.Height / NBROWCOLS;
             for (int i = 0; i < NBROWCOLS; i++)
             {
                 for (int j = 0; j < NBROWCOLS; j++)
                 {
-                    randomNumber = random.Next(0, 8);
+                    if (easy == true)
+                    {
+                        randomNumber = random.Next(0, 8);
+                    }
+                    if (medium == true)
+                    {
+                        randomNumber = random.Next(0, 5);
+                    }
+                    if (hard == true)
+                    {
+                        randomNumber = random.Next(0, 3);
+                    }
                     Point coordBtn = new Point(j * btnWidth, i * btnHeight);//btnCoord
                     arrButtons[i, j] = new Button();//Add the button to array
                     arrButtons[i, j].Location = coordBtn;//Location of the button
@@ -226,6 +256,24 @@ namespace Demineur
         private void btnNewGame_Click(object sender, EventArgs e)
         {
             Application.Restart();
+        }
+
+        private void btnEasy_Click(object sender, EventArgs e)
+        {
+            easy = true;
+            InitGame();
+        }
+
+        private void btnMedium_Click(object sender, EventArgs e)
+        {
+            medium = true;
+            InitGame();
+        }
+
+        private void btnHard_Click(object sender, EventArgs e)
+        {
+            hard = true;
+            InitGame();
         }
     }
 }
