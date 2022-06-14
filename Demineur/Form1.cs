@@ -108,7 +108,7 @@ namespace Demineur
             if (btnClicked.Tag == "Bomb")
             {
                 timer1.Stop();
-                File.AppendAllText(@"Scores.txt", $"\nScore: {Convert.ToString(score)}\nName: {name}\nTime: {timeToTxt}\nNumber of bombs: {Convert.ToString(nbrOfBomb)}\n");
+                File.AppendAllText(@"F:\05-repertoires-ict-ssd\AUTRES\Demineur\Demineur\Scores.txt", $"\nScore: {Convert.ToString(score)}\nName: {name}\nTime: {timeToTxt}\nNumber of bombs: {Convert.ToString(nbrOfBomb)}\nLost\n");
                 for (int i = 0; i < NBROWCOLS; i++)
                 {
                     for (int j = 0; j < NBROWCOLS; j++)
@@ -138,7 +138,7 @@ namespace Demineur
 
                 if (score == 100-nbrOfBomb)//Won
                 {
-                    File.AppendAllText(@"Scores.txt", $"\nScore: {Convert.ToString(score)}\nName: {name}\nTime: {timeToTxt}\nNumber of bombs: {Convert.ToString(nbrOfBomb)}\n");
+                    File.AppendAllText(@"F:\05-repertoires-ict-ssd\AUTRES\Demineur\Demineur\Scores.txt", $"\nScore: {Convert.ToString(score)}\nName: {name}\nTime: {timeToTxt}\nNumber of bombs: {Convert.ToString(nbrOfBomb)}\nWon\n");
 
                     DialogResult win = MessageBox.Show("Gagné! Rejouer ?", "Partie terminée", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (win == DialogResult.Yes)

@@ -16,6 +16,7 @@
     <None Remove="Images\bomb.jpg" />
     <None Remove="Images\bomb.png" />
     <None Remove="Images\flag.png" />
+    <None Remove="Score.txt" />
     <None Remove="Scores.txt" />
     <None Remove="Sounds\stress.wav" />
     <None Remove="stress.wav" />
@@ -28,13 +29,10 @@
     <Content Include="Images\flag.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Sounds\stress.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="Scores.txt">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\stress.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
