@@ -1,6 +1,4 @@
 ﻿///My version of minesweeper, when a non bomb button is clicked a text in the button will appear and tell how far the clicked button is from the nearest bomb
-
-
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -10,6 +8,7 @@ namespace Demineur
 {
     public partial class Form1 : Form
     {
+        int elapsedSeconds;
         bool easy;//Difficulty
         bool medium;//Difficulty
         bool hard;//Difficulty
@@ -33,10 +32,10 @@ namespace Demineur
             lblNbrOfBombs.Visible = false;
             lblNbrOfFlags.Visible = false;
             lblScore.Visible = false;
+            lblTime.Visible = false;
 
             //InitGame();
         }
-
 
         private void InitGame()
         {
@@ -48,6 +47,8 @@ namespace Demineur
             lblFlag.Visible = true;
             lblNbrOfBombs.Visible = true;
             lblNbrOfFlags.Visible = true;
+            timer1.Enabled = true;
+            lblTime.Visible = true;
             lblScore.Visible = true;
             int btnWidth = splitContainer.Panel2.Size.Width / NBROWCOLS;
             int btnHeight = splitContainer.Panel2.Size.Height / NBROWCOLS;
@@ -103,6 +104,7 @@ namespace Demineur
             Button btnClicked = (Button)sender;
             if (btnClicked.Tag == "Bomb")
             {
+                timer1.Stop();
                 for (int i = 0; i < NBROWCOLS; i++)
                 {
                     for (int j = 0; j < NBROWCOLS; j++)
@@ -274,6 +276,13 @@ namespace Demineur
         {
             hard = true;
             InitGame();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            elapsedSeconds++;
+            TimeSpan time = TimeSpan.FromSeconds(elapsedSeconds);
+            lblTime.Text = time.ToString(@"hh\:mm\:ss");
         }
     }
 }
