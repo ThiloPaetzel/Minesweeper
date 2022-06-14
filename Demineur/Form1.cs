@@ -3,12 +3,15 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Media;
+using System.IO;
 
 namespace Demineur
 {
     public partial class Form1 : Form
     {
         int elapsedSeconds;
+        TimeSpan timeToTxt;
+        string name;
         bool easy;//Difficulty
         bool medium;//Difficulty
         bool hard;//Difficulty
@@ -33,13 +36,13 @@ namespace Demineur
             lblNbrOfFlags.Visible = false;
             lblScore.Visible = false;
             lblTime.Visible = false;
-
-            //InitGame();
         }
 
         private void InitGame()
         {
             musicPlayer.PlayLooping();
+            lblName.Visible = false;
+            txtName.Visible = false;
             btnHard.Visible = false;
             btnEasy.Visible = false;
             btnMedium.Visible = false;
@@ -50,6 +53,7 @@ namespace Demineur
             timer1.Enabled = true;
             lblTime.Visible = true;
             lblScore.Visible = true;
+            name = txtName.Text;
             int btnWidth = splitContainer.Panel2.Size.Width / NBROWCOLS;
             int btnHeight = splitContainer.Panel2.Size.Height / NBROWCOLS;
             for (int i = 0; i < NBROWCOLS; i++)
@@ -86,7 +90,6 @@ namespace Demineur
                     {
                         arrButtons[i, j].Tag = "not bomb";
                     }
-
                     arrButtons[i, j].MouseWheel += new MouseEventHandler(this.arrButtons_wheelClicked);//Flag
                     arrButtons[i, j].MouseClick += new MouseEventHandler(this.arrButtons_click);//Click
                 }
@@ -105,6 +108,7 @@ namespace Demineur
             if (btnClicked.Tag == "Bomb")
             {
                 timer1.Stop();
+                File.AppendAllText(@"Scores.txt", $"\nScore: {Convert.ToString(score)}\nName: {name}\nTime: {timeToTxt}\nNumber of bombs: {Convert.ToString(nbrOfBomb)}\n");
                 for (int i = 0; i < NBROWCOLS; i++)
                 {
                     for (int j = 0; j < NBROWCOLS; j++)
@@ -134,7 +138,9 @@ namespace Demineur
 
                 if (score == 100-nbrOfBomb)//Won
                 {
-                    DialogResult win = MessageBox.Show("Gagné ! Rejouer ?", "Partie terminée", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                    File.AppendAllText(@"Scores.txt", $"\nScore: {Convert.ToString(score)}\nName: {name}\nTime: {timeToTxt}\nNumber of bombs: {Convert.ToString(nbrOfBomb)}\n");
+
+                    DialogResult win = MessageBox.Show("Gagné! Rejouer ?", "Partie terminée", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (win == DialogResult.Yes)
                     {
                         Application.Restart();
@@ -282,6 +288,7 @@ namespace Demineur
         {
             elapsedSeconds++;
             TimeSpan time = TimeSpan.FromSeconds(elapsedSeconds);
+            timeToTxt = time;
             lblTime.Text = time.ToString(@"hh\:mm\:ss");
         }
     }
